@@ -38,7 +38,7 @@ function startTrain() {
     	1,
     	0
     	])
-    model.fit(xs, ys).then(()=>{
+    model.fit(xs, ys, {epochs: document.getElementById("epochsRange").value}).then(()=>{
     	console.log("Trained !")
     	document.getElementById("result").innerHTML = "Trained !"
     })
