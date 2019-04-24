@@ -15,12 +15,16 @@
     	</p>
     	<p>To predict : [0, 0, 0] > 0</p>
     	<p id="result">Result : </p>
-    	<label for="slider">Hidden Layer Neurons Count Slider (Max = 10 000)</label>
+    	<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
     	<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange">
-    	<br>
+		<br>
+		<br>
+		<br>
     	<button onclick="setup();">Setup !</button>
 		<button onclick="startTrain();">Start train !</button>
 		<button onclick="startPredict();">Start predict !</button>
+		<br>
+		<br>
 		<br>
 		<a href="https://github.com/loockeeer/tensorflowjs-logic-suit">GitHub projet page</a>
 		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>

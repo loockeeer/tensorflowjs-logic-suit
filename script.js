@@ -52,5 +52,4 @@ function startPredict() {
 	console.log("Result : "+result.toString())
 	document.getElementById("result").innerHTML = "Result : "+result.toString()
 
-
 }
