@@ -9,7 +9,7 @@ function setup() {
 	model = tf.sequential();
 	const hiddenLayer = tf.layers.dense({
     units: parseInt(document.getElementById("neuronsRange").value),
-    inputShape: [3],
+    inputShape: [parseInt(document.getElementById("logicInputLength").value)],
     activation: "sigmoid"
 	})
 
@@ -22,24 +22,26 @@ function setup() {
 	model.add(outputLayer);
 
 	model.compile({
-	    optimizer: "adam",
-	    loss: tf.losses.softmaxCrossEntropy
+	    optimizer: "rmsprop",
+	    loss: tf.losses.meanSquaredError,
+        metrics: ['mae']
+
 	})
 }
 
 function startTrain() {
     document.getElementById("train").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Training...'
     let logicInputs = [
-        document.getElementById("logicInput1").value.split(""),
-        document.getElementById("logicInput2").value.split(""),
-        document.getElementById("logicInput3").value.split(""),
-        document.getElementById("logicInput4").value.split("")
+        document.getElementById("logicInput1").value.split("").map(x => {return parseInt(x)}),
+        document.getElementById("logicInput2").value.split("").map(x => {return parseInt(x)}),
+        document.getElementById("logicInput3").value.split("").map(x => {return parseInt(x)}),
+        document.getElementById("logicInput4").value.split("").map(x => {return parseInt(x)})
     ]
     const xs = tf.tensor2d([
-    	[parseInt(logicInputs[0][0]), parseInt(logicInputs[0][1]), parseInt(logicInputs[0][2])],
-    	[parseInt(logicInputs[1][0]), parseInt(logicInputs[1][1]), parseInt(logicInputs[1][2])],
-    	[parseInt(logicInputs[2][0]), parseInt(logicInputs[2][1]), parseInt(logicInputs[2][2])],
-    	[parseInt(logicInputs[3][0]), parseInt(logicInputs[3][1]), parseInt(logicInputs[3][2])]
+    	logicInputs[0],
+    	logicInputs[1],
+    	logicInputs[2],
+    	logicInputs[3]
     	])
     const ys = tf.tensor1d([
     	parseInt(document.getElementById("resultInput1").value),
@@ -56,13 +58,9 @@ function startTrain() {
 }
 
 function startPredict() {
-    let resultInputs = [
-        parseInt(document.getElementById("logicInputForResult").value.split("")[0]),
-        parseInt(document.getElementById("logicInputForResult").value.split("")[1]),
-        parseInt(document.getElementById("logicInputForResult").value.split("")[2])
-    ]
+    let logicInput = document.getElementById("logicInputForResult").value.split("").map(x => {return parseInt(x)})
 	const data = tf.tensor2d([
-		[resultInputs[0], resultInputs[1], resultInputs[2]]
+		logicInput
 	])
 	let result = model.predict(data)
     document.getElementById("result-modal-body").innerHTML = "The neural network predicted : "+result.toString()
