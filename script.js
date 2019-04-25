@@ -59,5 +59,6 @@ function startPredict() {
 	let result = model.predict(data)
 	console.log("Result : "+result.toString())
 	document.getElementById("result").innerHTML = "Result : "+result.toString()
-
+    document.getElementById("result-modal-body").innerHTML = "The neural network predicted : "+result.toString()
+    $('#exampleModal').modal('show')
 }
