@@ -1,36 +1,84 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-
 		<title>Logic suit Neural Network Training</title>
+		<style>
+		table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 15%
+		}
+		td, th {
+		border: 1px solid #dddddd;
+		padding: 8px;
+		}
+		tr:nth-child(even) {
+		background-color: #dddddd;
+		}
+		</style>
+		<script>
+		function loop() {
+			if(document.getElementById("logicInputLength").value > 15) {
+				document.getElementById("logicInputLength").value = 15
+			}
+			if(document.getElementById("logicInputLength").value < 3) {
+				document.getElementById("logicInputLength").value = 3
+			}
+			Array.from(document.querySelectorAll('.logicInput')).forEach(inp => {
+			    inp.maxLength = document.getElementById("logicInputLength").value.toString()
+			});
+		}
+		setInterval(loop, 100)
+		</script>
 	</head>
-
 	<body>
-		<p>Dataset : <br>
-		[1, 0, 0] > 0<br>
-    	[1, 1, 0] > 1<br>
-    	[1, 1, 1] > 1<br>
-    	[0, 1, 1] > 1<br>
-    	[0, 0, 1] > 0<br>
-    	</p>
-    	<p>To predict : [0, 0, 0] > 0</p>
-    	<p id="result">Result : </p>
-    	<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
-    	<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange">
-    	<br>
-    	<label for="epochsS">Count of training epochs (Max = 100)</label>
-    	<input type="range" name="epochsS" min="1" max="100" value="50" id="epochsRange">
-		<br>
-		<br>
-		<br>
-    	<button onclick="setup();">Setup !</button>
-		<button onclick="startTrain();">Start train !</button>
-		<button onclick="startPredict();">Start predict !</button>
-		<br>
-		<br>
-		<br>
-		<a href="https://github.com/loockeeer/tensorflowjs-logic-suit">GitHub projet page</a>
-		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-		<script src="script.js"></script>
-	</body>
-</html>
+		<label for="logiclength">Choisissez la longueur de vos suites logiques (3 - 15) :
+			<input type="number" name="quantity" min="3" max="15" name="logiclength" value="3" id="logicInputLength">
+			<table>
+				<thead>
+					<tr>
+						<th align="center">Suite logique</th>
+						<th align="center">Résultat</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+					</tr>
+					<tr>
+						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+					</tr>
+					<tr>
+						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+					</tr>
+					<tr>
+						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>To predict : [0, 0, 0] > 0</p>
+			<input type="text" class="logicInputForResult" maxlength="3">
+			<p id="result">Result : </p>
+			<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
+			<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange">
+			<br>
+			<label for="epochsS">Count of training epochs (Max = 100)</label>
+			<input type="range" name="epochsS" min="1" max="100" value="50" id="epochsRange">
+			<br>
+			<br>
+			<br>
+			<button onclick="setup();">Setup !</button>
+			<button onclick="startTrain();">Start train !</button>
+			<button onclick="startPredict();">Start predict !</button>
+			<br>
+			<br>
+			<br>
+			<a href="https://github.com/loockeeer/tensorflowjs-logic-suit">GitHub projet page</a>
+			<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+			<script src="script.js"></script>
+		</body>
+	</html>
