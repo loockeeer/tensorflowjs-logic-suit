@@ -11,16 +11,29 @@
 				document.getElementById("logicInputLength").value = 3
 			}
 			Array.from(document.querySelectorAll('.logicInput')).forEach(inp => {
-			    inp.maxLength = document.getElementById("logicInputLength").value.toString()
+				inp.maxLength = document.getElementById("logicInputLength").value.toString()
 			});
+			document.getElementById("logicInputForResult").maxLength = document.getElementById("logicInputLength").value.toString()
 		}
 		setInterval(loop, 100)
 		</script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<style>
+			.container {
+			padding-left: 100px;
+			padding-right: 100px;
+			}
+		</style>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
-		<label for="logiclength">Choisissez la longueur de vos suites logiques (3 - 15) :
-			<input type="number" name="quantity" min="3" max="15" name="logiclength" value="3" id="logicInputLength">
+		<div class="w-50 container">
+			<br>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">Choisissez la longueur de vos suites logiques (3 - 15) :</span>
+				</div>
+				<input class="form-control" type="number" name="quantity" min="3" max="15" name="logiclength" value="3" id="logicInputLength">
+			</div>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -30,33 +43,35 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
 					</tr>
 				</tbody>
 			</table>
-			<br>
-			<label for="logicInputForResult">Suite logique à calculer : </label>
-			<input type="text" class="logicInputForResult" maxlength="3" name="logicInputForResult">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">Suite logique à calculer : </span>
+				</div>
+				<input type="text" id="logicInputForResult" class="form-control" maxlength="3" name="logicInputForResult">
+			</div>
 			<p id="result">Result : </p>
 			<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
-			<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange">
+			<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange" class="slider">
 			<br>
 			<label for="epochsS">Count of training epochs (Max = 100)</label>
-			<input type="range" name="epochsS" min="1" max="100" value="50" id="epochsRange">
-			<br>
+			<input type="range" name="epochsS" min="1" max="100" value="50" id="epochsRange" class="slider">
 			<br>
 			<br>
 			<button type="button" class="btn btn-outline-dark" onclick="setup();">Setup !</button>
@@ -66,9 +81,9 @@
 			</div>
 			<br>
 			<br>
-			<br>
 			<a href="https://github.com/loockeeer/tensorflowjs-logic-suit">GitHub projet page</a>
 			<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
 			<script src="script.js"></script>
-		</body>
-	</html>
+		</div>
+	</body>
+</html>
