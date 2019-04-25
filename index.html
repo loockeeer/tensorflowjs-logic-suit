@@ -2,20 +2,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Logic suit Neural Network Training</title>
-		<style>
-		table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 15%
-		}
-		td, th {
-		border: 1px solid #dddddd;
-		padding: 8px;
-		}
-		tr:nth-child(even) {
-		background-color: #dddddd;
-		}
-		</style>
 		<script>
 		function loop() {
 			if(document.getElementById("logicInputLength").value > 15) {
@@ -30,15 +16,16 @@
 		}
 		setInterval(loop, 100)
 		</script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
 		<label for="logiclength">Choisissez la longueur de vos suites logiques (3 - 15) :
 			<input type="number" name="quantity" min="3" max="15" name="logiclength" value="3" id="logicInputLength">
-			<table>
+			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th align="center">Suite logique</th>
-						<th align="center">Résultat</th>
+						<th scope="col" align="center">Suite logique</th>
+						<th scope="col" align="center">Résultat</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -60,8 +47,9 @@
 					</tr>
 				</tbody>
 			</table>
-			<p>To predict : [0, 0, 0] > 0</p>
-			<input type="text" class="logicInputForResult" maxlength="3">
+			<br>
+			<label for="logicInputForResult">Suite logique à calculer : </label>
+			<input type="text" class="logicInputForResult" maxlength="3" name="logicInputForResult">
 			<p id="result">Result : </p>
 			<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
 			<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange">
@@ -71,9 +59,11 @@
 			<br>
 			<br>
 			<br>
-			<button onclick="setup();">Setup !</button>
-			<button onclick="startTrain();">Start train !</button>
-			<button onclick="startPredict();">Start predict !</button>
+			<button type="button" class="btn btn-outline-dark" onclick="setup();">Setup !</button>
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<button type="button" class="btn btn-outline-info" onclick="startTrain();">Start train !</button>
+				<button type="button" class="btn btn-outline-info" onclick="startPredict();">Start predict !</button>
+			</div>
 			<br>
 			<br>
 			<br>
