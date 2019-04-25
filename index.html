@@ -61,20 +61,20 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="000"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="0"></td>
+						<td align="center"><input id="logicInput1" type="text" class="logicInput form-control" maxlength="3" value="000"></td>
+						<td align="center"><input id="resultInput1" type="text" class="resultInput form-control" maxlength="1" value="0"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="111"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="1"></td>
+						<td align="center"><input id="logicInput2" type="text" class="logicInput form-control" maxlength="3" value="111"></td>
+						<td align="center"><input id="resultInput2" type="text" class="resultInput form-control" maxlength="1" value="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="011"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="1"></td>
+						<td align="center"><input id="logicInput3" type="text" class="logicInput form-control" maxlength="3" value="011"></td>
+						<td align="center"><input id="resultInput3" type="text" class="resultInput form-control" maxlength="1" value="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="001"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="0"></td>
+						<td align="center"><input id="logicInput4" type="text" class="logicInput form-control" maxlength="3" value="001"></td>
+						<td align="center"><input id="resultInput4" type="text" class="resultInput form-control" maxlength="1" value="0"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -84,7 +84,6 @@
 				</div>
 				<input type="text" id="logicInputForResult" class="form-control" maxlength="3" name="logicInputForResult" value="100">
 			</div>
-			<p id="result">Result : </p>
 			<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
 			<input type="range" name="slider" min="1" max="10000" value="50" id="neuronsRange" class="slider">
 			<br>
