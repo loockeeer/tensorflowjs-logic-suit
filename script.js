@@ -1,7 +1,11 @@
 let model = tf.sequential();
 
 
+let setuped = false
+
 function setup() {
+    setuped = true
+    document.getElementById("train").disabled = false
 	model = tf.sequential();
 	const hiddenLayer = tf.layers.dense({
     units: parseInt(document.getElementById("neuronsRange").value),
@@ -24,6 +28,7 @@ function setup() {
 }
 
 function startTrain() {
+    document.getElementById("train").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Training...'
     const xs = tf.tensor2d([
     	[1, 0, 0], // 1 0 0 | 1 1 0 | 1 1 1 | 0 1 1 | 0 0 1 | 0 0 0 | 1 0 1 | 0 1 0
     	[1, 1, 0],
@@ -37,11 +42,14 @@ function startTrain() {
     	1,
     	1,
     	0
-    	])
+    	]) 
+    document.getElementById("train").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Training...'
     model.fit(xs, ys, {epochs: document.getElementById("epochsRange").value}).then(()=>{
     	console.log("Trained !")
-    	document.getElementById("result").innerHTML = "Trained !"
+        document.getElementById("train").innerHTML = 'Start train !'
+        document.getElementById("predict").disabled = false
     })
+
 }
 
 function startPredict() {

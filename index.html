@@ -43,20 +43,20 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="000"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="0"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="111"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="011"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="1"></td>
 					</tr>
 					<tr>
-						<td align="center"><input type="text" class="logicInput form-control" maxlength="3"></td>
-						<td align="center"><input type="text" class="resultInput form-control" maxlength="1"></td>
+						<td align="center"><input type="text" class="logicInput form-control" maxlength="3" value="001"></td>
+						<td align="center"><input type="text" class="resultInput form-control" maxlength="1" value="0"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -64,7 +64,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="basic-addon1">Suite logique à calculer : </span>
 				</div>
-				<input type="text" id="logicInputForResult" class="form-control" maxlength="3" name="logicInputForResult">
+				<input type="text" id="logicInputForResult" class="form-control" maxlength="3" name="logicInputForResult" value="100">
 			</div>
 			<p id="result">Result : </p>
 			<label for="slider">Hidden Layer Neurons Count Slider (Max = 10000)</label>
@@ -76,12 +76,13 @@
 			<br>
 			<button type="button" class="btn btn-outline-dark" onclick="setup();">Setup !</button>
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<button type="button" class="btn btn-outline-info" onclick="startTrain();">Start train !</button>
-				<button type="button" class="btn btn-outline-info" onclick="startPredict();">Start predict !</button>
+				<button type="button" class="btn btn-outline-info" id="train" disabled="true" onclick="startTrain();">Start train !</button>
+				<button type="button" class="btn btn-outline-info" id="predict" disabled="true" onclick="startPredict();">Start predict !</button>
 			</div>
 			<br>
 			<br>
-			<a href="https://github.com/loockeeer/tensorflowjs-logic-suit">GitHub projet page</a>
+			<a href="https://github.com/loockeeer/">My GitHub</a>
+			<a href="https://github.com/loockeeer/">GitHub repository for this project</a>
 			<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
 			<script src="script.js"></script>
 		</div>
