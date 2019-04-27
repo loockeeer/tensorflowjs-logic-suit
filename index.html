@@ -19,8 +19,13 @@
 		</script>
 		<style>
 			.container {
+			margin-top: 20px;
 			padding-left: 100px;
 			padding-right: 100px;
+			background-color: white;
+			}
+			html body {
+				background: url("background.png") repeat;
 			}
 		</style>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,7 +35,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Predicted !</h5>
+						<h5 class="modal-title">Predicted !</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 						</button>
@@ -44,11 +49,69 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="settingsAdvanced" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Advenced Settings</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="settings-modal-body">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">Choose activation function </label>
+							</div>
+							<select class="custom-select" id="activationFunctionSelector">
+								<option value="1">Sigmoid</option>
+								<option value="2">Tanh</option>
+								<option value="3">ReLU</option>
+								<option value="4">Elu</option>
+								<option value="5">softmax</option>
+							</select>
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">Choose optimizer </label>
+							</div>
+							<select class="custom-select" id="optimizerSelector">
+								<option value="1">sgd</option>
+								<option value="3">adagrad</option>
+								<option value="4">adadelta</option>
+								<option value="5">adam</option>
+								<option value="6">adamax</option>
+								<option value="7">rmsprop</option>
+							</select>
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">Choose loss function </label>
+							</div>
+							<select class="custom-select" id="lossFunctionSelector">
+								<option value="1">absoluteDifference</option>
+								<option value="3">computeWeightedLoss</option>
+								<option value="4">cosineDistance</option>
+								<option value="5">hingeLoss</option>
+								<option value="6">huberLoss</option>
+								<option value="7">logLoss</option>
+								<option value="8">meanSquaredError</option>
+								<option value="9">sigmoidCrossEntropy</option>
+								<option value="10">softmaxCrossEntropy</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="w-50 container">
 			<br>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon1">Choisissez la longueur de vos suites logiques (3 - 15) :</span>
+					<span class="input-group-text" id="basic-addon1">Choisissez la longueur de vos suites logiques (3 - 15) </span>
 				</div>
 				<input class="form-control" type="number" name="quantity" min="3" max="15" name="logiclength" value="3" id="logicInputLength">
 			</div>
@@ -80,16 +143,17 @@
 			</table>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon1">Suite logique à calculer : </span>
+					<span class="input-group-text" id="basic-addon1">Suite logique à calculer </span>
 				</div>
 				<input type="text" id="logicInputForResult" class="form-control" maxlength="3" name="logicInputForResult" value="100">
 			</div>
-			<label for="slider">Hidden Layer Neurons Count Slider (Max = 100 000)</label>
+			<label for="slider">Hidden Layer Neurons Count Slider (Max = 100 000) </label>
 			<input type="range" name="slider" min="1" max="100000" value="50" id="neuronsRange" class="slider">
 			<br>
-			<label for="epochsS">Count of training epochs (Max = 100)</label>
+			<label for="epochsS">Count of training epochs (Max = 100) </label>
 			<input type="range" name="epochsS" min="1" max="100" value="50" id="epochsRange" class="slider">
 			<br>
+			<button type="button" class="btn btn-link" onclick="$('#settingsAdvanced').modal('show')">Advanced Settings</button>
 			<br>
 			<button type="button" class="btn btn-outline-dark" onclick="setup();">Setup !</button>
 			<div class="btn-group" role="group" aria-label="Basic example">
